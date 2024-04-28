@@ -8,6 +8,7 @@ import {
 } from '@mui/x-data-grid';
 import ImageModal from './ImageModal';
 import './styles.css';
+import { useTheme } from '../Theme';
 
 interface Book {
   id: string;
@@ -23,6 +24,7 @@ const DataTable: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [sortModel, setSortModel] = useState<GridSortItem[]>([]);
+  const { toggleTheme, theme } = useTheme();
 
   useEffect(() => {
     const storedBooks: any = localStorage.getItem('books');
@@ -37,6 +39,10 @@ const DataTable: React.FC = () => {
       fetchBooks();
     }
   }, []);
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
@@ -71,7 +77,6 @@ const DataTable: React.FC = () => {
       console.error('Error fetching books:', error);
     }
   };
-
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 100, sortable: true },
@@ -131,11 +136,13 @@ const DataTable: React.FC = () => {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
+      <button className='toggle-btn' onClick={toggleTheme}>
+        Toggle Theme
+      </button>
       <DataGrid
         rows={books}
         columns={columns}
         autoHeight
-        pageSizeOptions={[10, 100, { value: 1000, label: '1,000' }]}
         onRowClick={handleRowClick}
         sortModel={sortModel}
         disableRowSelectionOnClick

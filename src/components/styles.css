@@ -1,24 +1,45 @@
 .modalPaper {
-    width: 600px;
-    height: 600px;
-    margin: auto;
-    margin-top: 100px;
-    padding: 20px;
-  }
-  
-  .image {
-    width: auto;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  overflow-y: auto;
+}
 
-  .title-cell {
-    font-weight: bold;
-    color: blue;
-  }
-  
-  .authors-cell {
-    font-style: italic;
-    color: green;
-  }
+.toggle-btn {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.image {
+  width: auto;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+
+.MuiDataGrid-cell--textLeft {
+  font-weight: bold;
+  color: var(--text-color);
+}
+.title-cell {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.authors-cell {
+  font-style: italic;
+  color: var(--secondary);
+}
+
+
